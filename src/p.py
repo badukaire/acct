@@ -2,7 +2,7 @@
 #:
 #: usage: python p.py [<options>] <file>
 #: options:
-#: -s : initial balance file
+#: -i : initial balance file
 #: -d : date min/max/month/year
 #:   examples: 2016, 2016-04, 2016-04:2016-05, 2016-04-02:2016-04-08
 #:
@@ -18,6 +18,8 @@ from datetime import datetime, timedelta
 # TODO : only define in 1 place valid account types (use dict in balance)
 # TODO : read balance with starting value for accounts
 # TODO : process more than 1 movs file
+# TODO : make mov date optional
+# TODO : be less strict with lengths
 
 
 class Acct :
@@ -45,7 +47,8 @@ class Acct :
   W_LINE = 2 * W_ACCT + W_AMOUNT + W_DATE
   W_BAL_LINE = 24
 
-  gssTypes = ( 'S_', 'D_', 'C_', 'P_', 'F_', 'X_' ) # valid account name types
+  # valid account name types prefixes
+  gssTypes = ( 'S_', 'D_', 'C_', 'P_', 'F_', 'X_' )
 
   gsFmtYear = "%Y"
   gsFmtMonth = "%Y-%m"
@@ -236,6 +239,7 @@ class Acct :
     lfExtl = .0
     lsSepTitle = "========="
     lsSepSaldo = "========================"
+    print( lsSepTitle[ : 4 ] ) # trick piped sed
     print( lsSepTitle )
     print( "BALANCES:" )
     print( lsSepTitle )

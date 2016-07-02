@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# TODO : check argc $#
+# TODO : check if git installed before running git command
+
 ME=$0
 FF=$1
 
@@ -23,12 +26,12 @@ echo "processing movs file $F_MOVS ..."
 [ -f $F_INIS ] && {
   echo "using initial saldo file $F_INIS"
   echo "python $PP/p.py -i $F_INIS $F_MOVS"
-  python $PP/p.py -i $F_INIS $F_MOVS | grep -B 1 -A 100 === >$F_OUT
+  python $PP/p.py -i $F_INIS $F_MOVS | sed '1,/====/ d' >$F_OUT
   RES=$?
 } || {
   echo "NOT using initial saldo file ($F_INIS not found)"
   echo "python $PP/p.py $F_MOVS"
-  python $PP/p.py $F_MOVS | grep -B 1 -A 100 === >$F_OUT
+  python $PP/p.py $F_MOVS | sed '1,/====/ d' >$F_OUT
   RES=$?
 }
 
