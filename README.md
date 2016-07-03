@@ -30,14 +30,14 @@ and [ledger](http://ledger-cli.org/) existed.
 It is best to use the script from a wrapper shell script called `p.sh` :
 
 ```bash
-$ python /path/to/script/p.sh myTrip
+$ python /path/to/script/p.sh ourTrip
 ```
 
-This will look for a file called `myTrip.txt` containing the
-movements, will process them, and leave the output balance in a
-file name `myTrip_bal.txt`. The parameter *myTrip* is the
-_descriptor_ of the accounting and input and output names
-are based on it.
+This will look for a file called `ourTrip.txt` (`.txt` extension
+added) containing the movements, will process them, and leave the
+output balance in a file name `ourTrip_bal.txt`. The parameter
+*ourTrip* is the _descriptor_ of the accounting set, and input
+and output names are based upon it.
 
 
 ## advanced usage
@@ -46,7 +46,7 @@ With the above example it is possible to start accounting.
 
 There are a few other features that can be useful.
 
-In case a file named `myTrip_saldoIni.txt` exists, it will be
+In case a file named `ourTrip_saldoIni.txt` exists, it will be
 read and used as the initial saldo. This file has to be in
 the same format as the balance file (the output), so that it
 is easy to reuse balances of previous time periods.
@@ -55,7 +55,7 @@ In case you want to specify the date range of the movements, do
 it after the descriptor, like this :
 
 ```bash
-$ python /path/to/script/p.sh myTrip 2016-10
+$ python /path/to/script/p.sh ourTrip 2016-10
 ```
 
 This would process only the movements in the file from October
