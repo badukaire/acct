@@ -17,18 +17,21 @@ F_INIS=${FF}_saldoIni.txt
 F_MOVS=${FF}.txt
 F_OUT=${FF}_out.txt
 F_BAL=${FF}_bal.txt
+F_RPT=${FF}_rpt.txt
 
-URL=`git remote -v | grep fetch | grep github | cut -f 2 | cut -d" " -f 1`
-echo "using code from ${URL}"
+type git && {
+  URL=`git remote -v | grep fetch | grep github | cut -f 2 | cut -d" " -f 1`
+  echo "using code from ${URL}"
+}
 
 PP=`dirname $ME`
 echo working on folder $PP
 
 [ -f $F_MOVS ] || {
-  echo "FATAL: movements file $F_MOVS NOT found, aborting ..."
+  echo "FATAL: transactions file $F_MOVS NOT found, aborting ..."
   exit 1
 }
-echo "processing movs file $F_MOVS ..."
+echo "processing transactions file $F_MOVS ..."
 
 [ -f $F_INIS ] && {
   echo "using initial saldo file $F_INIS"
@@ -43,12 +46,15 @@ echo "processing movs file $F_MOVS ..."
 }
 
 [ $RES -eq 0 ] || {
-  echo "ERROR processing file ${F_MOVS}, quitting ..."
+  echo "ERROR processing transactions file ${F_MOVS}, quitting ..."
   exit 1
 }
-echo "file $F_MOVS processed OK"
+echo "transactions file $F_MOVS processed OK"
 echo "tmp output in $F_OUT"
 
 bash $PP/b.sh $F_OUT >$F_BAL
 echo "balance in $F_BAL"
+
+bash $PP/r.sh $F_OUT >$F_RPT
+echo "report in $F_RPT"
 

@@ -1,4 +1,4 @@
-#: processes accounting movements from text file, and prints the balance
+#: processes accounting transactions from text file, and prints the balance
 #:
 #: usage: python p.py [<options>] <file>
 #: options:
@@ -8,7 +8,7 @@
 #:
 #: can be called from any folder, and can use wrapper script p.sh
 #:
-#: file contains accounting movements with format ...
+#: file contains accounting transactions with format ...
 from __future__ import print_function
 
 import sys
@@ -16,10 +16,9 @@ import getopt
 from datetime import datetime, timedelta
 
 # TODO : only define in 1 place valid account types (use dict in balance)
-# TODO : read balance with starting value for accounts
 # TODO : process more than 1 movs file
 # TODO : make mov date optional
-# TODO : be less strict with lengths
+# TODO : be less strict with lenghts
 
 
 class Acct :
@@ -243,20 +242,20 @@ class Acct :
     print( lsSepTitle )
     print( "BALANCES:" )
     print( lsSepTitle )
-    print( "total movements read file = %d" % self.miMov )
-    print( "total movements accounted = %d" % self.miMovAcct )
+    print( "total read file transactions = %d" % self.miMov )
+    print( "total accounted transactions = %d" % self.miMovAcct )
     if Acct.gTupDateRange == None :
-      print( "NO date limit for movements set" )
+      print( "NO date limit for transactions set" )
     else :
       lsDate1 = Acct.gTupDateRange[ 0 ].strftime( Acct.gsFmtDate )
       lsDate2 = (Acct.gTupDateRange[ 1 ] - timedelta( days = 1 )).strftime( Acct.gsFmtDate )
-      print( "date limit for movements : %s - %s" % ( lsDate1, lsDate2 ) )
+      print( "date limit for transactions : %s - %s" % ( lsDate1, lsDate2 ) )
     if self.miMovAcct > 0 :
       lsDateIni = self.mDateIni.strftime( Acct.gsFmtDate )
       lsDateFin = self.mDateFin.strftime( Acct.gsFmtDate )
-      print( "found movements from %s to %s" % ( lsDateIni, lsDateFin ) )
+      print( "found transactions from %s to %s" % ( lsDateIni, lsDateFin ) )
     else :
-      print( "NO accounted movements" )
+      print( "NO accounted transactions" )
     lListKeys = self.mDictSaldo.keys()
     #print lListKeys
     lListKeys2 = sorted( lListKeys )
@@ -377,13 +376,12 @@ class Acct :
         lTimeDelta = timedelta( days = 1 )
         lDate2 = lDate + lTimeDelta
       elif liLen == 7 :
-        liYear = lDate.year + 1
         liMonth = lDate.month + 1
         if liMonth > 12 :
           liMonth -= 12
           liYear = lDate.year + 1
         lDate1 = lDate.replace( month = liMonth )
-        lDate2 = lDate1.replace( year = lDate.year + 1 )
+        lDate2 = lDate1.replace( year = lDate.year )
       elif liLen == 4 :
         lDate2 = lDate.replace( year = lDate.year + 1 )
       if lDate0 >= lDate2 :

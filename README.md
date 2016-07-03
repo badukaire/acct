@@ -186,7 +186,7 @@ this is the TODO list, there may be more embedded in the scripts
 [X] use transaction instead of movement in scripts
 [ ] script for formatting a badly formatted transactions file
 [ ] script for formatting a badly formatted saldo file
-[ ] generate categories balance (income/expenses/cash)
+[X] generate report (income/expenses/cash)
 [ ] add several simple test samples
 [ ] try displaying initial output with config and info (sed)
 [ ] make mov date optional
