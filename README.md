@@ -11,10 +11,10 @@ The output is a balance with the detailed saldos for each account and
 also account categories.
 
 A balance can be used as input for the script so it is considered
-as the initial balance for a set of movements, so that the movements
-and balances are registered monthly, weekly or yearly.
+as the initial balance for a set of transactions, so that accounting
+can be split and processed in time lapses (monthly, weekly or yearly).
 
-It is also possible to specify a date range of the movements to
+It is also possible to specify a date range of the transactions to
 process and ignore those beyond it.
 
 The script has been designed with the expectation of being able
@@ -36,7 +36,7 @@ $ python /path/to/script/p.sh ourTrip
 ```
 
 This will look for a file called `ourTrip.txt` (`.txt` extension
-added) containing the movements, will process them, and leave the
+added) containing the transactions, will process them, and leave the
 output balance in a file name `ourTrip_bal.txt`. The parameter
 *ourTrip* is the _descriptor_ of the accounting set, and input
 and output names are based upon it.
@@ -53,14 +53,14 @@ read and used as the initial saldo. This file has to be in
 the same format as the balance file (the output), so that it
 is easy to reuse balances of previous time periods.
 
-In case you want to specify the date range of the movements, do 
+In case you want to specify the date range of the transactions, do 
 it after the descriptor, like this :
 
 ```bash
 $ python /path/to/script/p.sh ourTrip 2016-10
 ```
 
-This would process only the movements in the file from October
+This would process only the transactions in the file from October
 1st to October 31st, 2016.
 
 The date range can be given as the year, the year and month, and year
@@ -98,7 +98,7 @@ been spent, how much money has come in ...
 
 # input formats
 
-There are 2 type of file formats, one for the movements and
+There are 2 type of file formats, one for the transactions and
 another for the balance. In both formats, the content after
 a hash sign ('\#') is ignored and can be used as comments.
 Blank lines are also ignored, therefore both comment and
@@ -121,9 +121,9 @@ The first item must be in column 1 of the line, the others
 have more flexibility.
 
 
-## movements file
+## transactions file
 
-The movements file contains blank-separated items
+The transactions file contains blank-separated items
 that are, in this order:
 
 * debit account
@@ -150,7 +150,7 @@ D_MARC      I_ANNA           40.00  2016-06-19 # Anna pays Marc's meal
 
 This file is both output and input, and as such its output can
 be reused as input (initial balance) for another set of
-movements. The balance file has another type of unused line,
+transactions. The balance file has another type of unused line,
 lines starting with the equal sign ('\='). The generated
 balance files have one at both the start and end of file
 
@@ -170,8 +170,8 @@ guaranteed.
 # helper tools
 
 There is a script to improve the alignment and therefore
-the readability of a movements file. It can even help turn 
-readable a non-readable movement file.
+the readability of a transactions file. It can even help turn 
+readable a non-readable transactions file.
 
 The script is called `r.sh`. It modifies the input file, so
 make sure to make a copy if you are unsure about losing data.
@@ -182,9 +182,9 @@ make sure to make a copy if you are unsure about losing data.
 
 this is the TODO list, there may be more embedded in the scripts
 
-[ ] use transaction instead of movement in doc
-[ ] use transaction instead of movement in scripts
-[ ] script for formatting a badly formatted movements file
+[X] use transaction instead of movement in doc
+[X] use transaction instead of movement in scripts
+[ ] script for formatting a badly formatted transactions file
 [ ] script for formatting a badly formatted saldo file
 [ ] generate categories balance (income/expenses/cash)
 [ ] add several simple test samples
