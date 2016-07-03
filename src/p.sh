@@ -19,8 +19,10 @@ F_OUT=${FF}_out.txt
 F_BAL=${FF}_bal.txt
 F_RPT=${FF}_rpt.txt
 
-URL=`git remote -v | grep fetch | grep github | cut -f 2 | cut -d" " -f 1`
-echo "using code from ${URL}"
+type git && {
+  URL=`git remote -v | grep fetch | grep github | cut -f 2 | cut -d" " -f 1`
+  echo "using code from ${URL}"
+}
 
 PP=`dirname $ME`
 echo working on folder $PP
