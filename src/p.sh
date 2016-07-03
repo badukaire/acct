@@ -25,10 +25,10 @@ PP=`dirname $ME`
 echo working on folder $PP
 
 [ -f $F_MOVS ] || {
-  echo "FATAL: movements file $F_MOVS NOT found, aborting ..."
+  echo "FATAL: transactions file $F_MOVS NOT found, aborting ..."
   exit 1
 }
-echo "processing movs file $F_MOVS ..."
+echo "processing transactions file $F_MOVS ..."
 
 [ -f $F_INIS ] && {
   echo "using initial saldo file $F_INIS"
@@ -43,10 +43,10 @@ echo "processing movs file $F_MOVS ..."
 }
 
 [ $RES -eq 0 ] || {
-  echo "ERROR processing file ${F_MOVS}, quitting ..."
+  echo "ERROR processing transactions file ${F_MOVS}, quitting ..."
   exit 1
 }
-echo "file $F_MOVS processed OK"
+echo "transactions file $F_MOVS processed OK"
 echo "tmp output in $F_OUT"
 
 bash $PP/b.sh $F_OUT >$F_BAL
