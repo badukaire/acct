@@ -96,8 +96,23 @@ been spent, how much money has come in ...
 
 # input formats
 
-blah
+There are 2 type of file formats, one for the movements and
+another for the balance. In both formats, the content after
+a hash sign ('\#') is ignored and can be used as comments.
+Blank lines are also ignored, therefore both comment and
+blank lines are encouraged to improve readability.
 
+# movements file
+
+The movements file 
+
+# balance file
+
+This file is both output and input, and as such its output can
+be reused as input (initial balance) for another set of
+movements. The balance file has another type of unused line,
+lines starting with the equal sign ('\='). The generated
+balance files have one at both the start and end of file
 
 # helper tools
 
