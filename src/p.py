@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 # TODO : only define in 1 place valid account types (use dict in balance)
 # TODO : process more than 1 movs file
 # TODO : make mov date optional
-# TODO : be less strict with lengths
+# TODO : be less strict with lenghts
 
 
 class Acct :
@@ -376,13 +376,12 @@ class Acct :
         lTimeDelta = timedelta( days = 1 )
         lDate2 = lDate + lTimeDelta
       elif liLen == 7 :
-        liYear = lDate.year + 1
         liMonth = lDate.month + 1
         if liMonth > 12 :
           liMonth -= 12
           liYear = lDate.year + 1
         lDate1 = lDate.replace( month = liMonth )
-        lDate2 = lDate1.replace( year = lDate.year + 1 )
+        lDate2 = lDate1.replace( year = lDate.year )
       elif liLen == 4 :
         lDate2 = lDate.replace( year = lDate.year + 1 )
       if lDate0 >= lDate2 :
