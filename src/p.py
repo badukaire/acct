@@ -15,6 +15,7 @@ import sys
 import getopt
 from datetime import datetime, timedelta
 
+# FIXME : if -d is a month, increases the year for 2nd date
 # TODO : only define in 1 place valid account types (use dict in balance)
 # TODO : read balance with starting value for accounts
 # TODO : process more than 1 movs file
