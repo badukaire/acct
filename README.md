@@ -23,7 +23,9 @@ to be used from a web form.
 Note: this script was started to be written before knowing
 that a similar and indeed more mature project called
 [plain text accounting](http://plaintextaccounting.org/)
-and [ledger](http://ledger-cli.org/) existed.
+and [ledger](http://ledger-cli.org/) existed. Having
+known it, perhaps it would have not been written, but
+perhaps there is place for lighter and simpler tool.
 
 ## usage
 
