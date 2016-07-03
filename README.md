@@ -32,7 +32,7 @@ perhaps there is place for lighter and simpler tool.
 It is best to use the script from a wrapper shell script called `p.sh` :
 
 ```bash
-$ python /path/to/script/p.sh ourTrip
+$ bash /path/to/script/p.sh ourTrip
 ```
 
 This will look for a file called `ourTrip.txt` (`.txt` extension
@@ -57,7 +57,7 @@ In case you want to specify the date range of the transactions, do
 it after the descriptor, like this :
 
 ```bash
-$ python /path/to/script/p.sh ourTrip 2016-10
+$ bash /path/to/script/p.sh ourTrip 2016-10
 ```
 
 This would process only the transactions in the file from October
