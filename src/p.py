@@ -265,7 +265,9 @@ class Acct :
     for lsAcct in lListKeys2 :
       # no need to try:
       lfSaldo = self.mDictSaldo[ lsAcct ]
-      print( "%-12s : %9.2f" % ( lsAcct, lfSaldo ) )
+      print( "%-12s: %9.2f" % ( lsAcct, lfSaldo ) )
+      # TODO : use Acct.W_ACCT for formatting
+
       lsAcctType = lsAcct[ 0 : 2 ]
       # TODO : use a dictionary for this
       if lsAcctType == "C_" : # caixa
