@@ -370,18 +370,13 @@ class Acct :
         Acct.eprint( "FATAL: date range is not formed by 2 equal-length/format" )
             
     if len( lList ) == 2 :
-      print( "2 dates" )
-      print( lList )
       lDate0 = lList[ 0 ]
       liLen = len( lss[ 0 ] )
       if liLen == 10 :
-        print( "len 10" )
         lTimeDelta = timedelta( days = 1 )
         lDate2 = lDate + lTimeDelta
       elif liLen == 7 :
-        print( "len 7" )
         liMonth = lDate.month + 1
-        print( "month = %d" % liMonth )
         if liMonth > 12 :
           liMonth -= 12
           liYear = lDate.year + 1
