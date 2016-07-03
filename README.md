@@ -102,11 +102,26 @@ a hash sign ('\#') is ignored and can be used as comments.
 Blank lines are also ignored, therefore both comment and
 blank lines are encouraged to improve readability.
 
-# movements file
+# columns format
+
+Each line on the files is formed by *columns* or
+components. Each one has a well-defined format:
+
+* accounts : the account name, as described above, with
+a max lenght of 12. Example : `S_TEAM`
+* amounts : positive floating-point number with 2 decimal
+figures. On the balance file may be of course negative).
+Examples: 80.00, -3.21
+* date : yyyy-mm-dd, the dates are specified up to the
+day, in ISO format
+
+
+## movements file
 
 The movements file 
 
-# balance file
+
+## balance file
 
 This file is both output and input, and as such its output can
 be reused as input (initial balance) for another set of
@@ -114,9 +129,27 @@ movements. The balance file has another type of unused line,
 lines starting with the equal sign ('\='). The generated
 balance files have one at both the start and end of file
 
+The format is the account name, followed by at least 1 blank,
+then a colon, followed by at least 1 blank, and then the amount.
+
+```
+S_TEAM      :   -180.00
+```
+
+As in the example above, it is recommended that the colon
+is in column 13, and the decimal dot on column 21. Lines
+with different positions may be read but it is not
+guaranteed.
+
+
 # helper tools
 
-blah
+There is a script to improve the alignment and therefore
+the readability of a movements file. It can even help turn 
+readable a non-readable movement file.
+
+The script is called `r.sh`. It modifies the input file, so
+make sure to make a copy if you are unsure about losing data.
 
 
 
@@ -124,6 +157,8 @@ blah
 
 this is the TODO list, there may be more embedded in the scripts
 
+[ ] use transaction instead of movement in doc
+[ ] use transaction instead of movement in scripts
 [ ] script for formatting a badly formatted movements file
 [ ] script for formatting a badly formatted saldo file
 [ ] generate categories balance (income/expenses/cash)
