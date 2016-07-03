@@ -33,12 +33,14 @@ echo "processing movs file $F_MOVS ..."
 [ -f $F_INIS ] && {
   echo "using initial saldo file $F_INIS"
   echo "python $PP/p.py -i $F_INIS $DATE $F_MOVS"
-  python $PP/p.py -i $F_INIS $DATE $F_MOVS | sed '1,/====/ d' >$F_OUT
+  #python $PP/p.py -i $F_INIS $DATE $F_MOVS | sed '1,/====/ d' >$F_OUT
+  python $PP/p.py -i $F_INIS $DATE $F_MOVS >$F_OUT
   RES=$?
 } || {
   echo "NOT using initial saldo file ($F_INIS not found)"
   echo "python $PP/p.py $DATE $F_MOVS"
-  python $PP/p.py $DATE $F_MOVS | sed '1,/====/ d' >$F_OUT
+  #python $PP/p.py $DATE $F_MOVS | sed '1,/====/ d' >$F_OUT
+  python $PP/p.py $DATE $F_MOVS >$F_OUT
   RES=$?
 }
 
