@@ -72,11 +72,26 @@ be : 2016, 2016-04, 2016-04:2016-05, 2016-04-02:2016-04-08
 # the accounts
 
 Since this is an accounting script, the concept of accounts is
-used.
+required. Each account has a type and an identifier. The type is
+1 letter and an underscore ('\_'), and is the prefix of the
+account name. For example, *C_SHARED* is an account of type 
+'C' (cash) and identifier 'SHARED'.
 
 ## account types
 
-blah
+The account types allowed by the script are as follows:
+
+- **C** : Cash
+- **I** : Income
+- **X** : eXpenses
+- **D** : Debts (unpaid transactions)
+- **S** : Stock
+- **Z** : external record (unrelated to the group)
+
+For each one of these account types, a balance including all
+the accounts of the same type is calculated. This way it is
+possible to know the amount of remaining cash, how much has
+been spent, how much money has come in ...
 
 
 # input formats
