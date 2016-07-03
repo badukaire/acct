@@ -20,6 +20,10 @@ process and ignore those beyond it.
 The script has been designed with the expectation of being able
 to be used from a web form.
 
+Note: this script was started to be written before knowing
+that a similar and indeed more mature project called
+[plain text accounting](http://plaintextaccounting.org/)
+and [ledger](http://ledger-cli.org/) existed.
 
 ## usage
 
