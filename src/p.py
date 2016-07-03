@@ -16,7 +16,6 @@ import getopt
 from datetime import datetime, timedelta
 
 # TODO : only define in 1 place valid account types (use dict in balance)
-# TODO : read balance with starting value for accounts
 # TODO : process more than 1 movs file
 # TODO : make mov date optional
 # TODO : be less strict with lengths
