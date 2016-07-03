@@ -102,9 +102,9 @@ a hash sign ('\#') is ignored and can be used as comments.
 Blank lines are also ignored, therefore both comment and
 blank lines are encouraged to improve readability.
 
-# columns format
+# items format
 
-Each line on the files is formed by *columns* or
+Each line on the files is formed by *items* or
 components. Each one has a well-defined format:
 
 * accounts : the account name, as described above, with
@@ -115,10 +115,33 @@ Examples: 80.00, -3.21
 * date : yyyy-mm-dd, the dates are specified up to the
 day, in ISO format
 
+The first item must be in column 1 of the line, the others
+have more flexibility.
+
 
 ## movements file
 
-The movements file 
+The movements file contains blank-separated items
+that are, in this order:
+
+* debit account
+* credit account
+* amount
+* date (optional)
+
+Each item must be in its format. The recommended positions
+are:
+
+* credit account : column 13
+* amount decimal dot : column 32
+* date : column 37
+
+Example lines:
+
+```
+D_MARC      I_ANNA           40.00  2016-06-19 # Anna pays Marc's meal
+```
+
 
 
 ## balance file
@@ -164,4 +187,5 @@ this is the TODO list, there may be more embedded in the scripts
 [ ] generate categories balance (income/expenses/cash)
 [ ] add several simple test samples
 [ ] try displaying initial output with config and info (sed)
+[ ] make mov date optional
 
