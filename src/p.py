@@ -229,7 +229,8 @@ class Acct :
     
 
   # TODO rename to balance()
-  def balance( self ) :
+  def balance( self, byHolder = 1 ) :
+    if not byHolder == 0 : lDict = {}
     lfGent = .0
     lfGone = .0
     lfCash = .0
@@ -284,6 +285,14 @@ class Acct :
       else :
         Acct.eprint( "unknown acct type '%s'" % lsAcctType )
         sys.exit( 1 )
+
+      if not byHolder == 0 :
+        lsAcctHolder = lsAcct[ 2 : ]
+        try :
+          lDict[ lsAcctHolder ] += lfSaldo
+        except :
+          lDict[ lsAcctHolder ] = lfSaldo
+
     print( lsSepSaldo )
     print( "%-12s : %9.2f" % ( "total stock",  lfStok ) )
     print( "%-12s : %9.2f" % ( "total people", lfGent ) )
@@ -291,6 +300,11 @@ class Acct :
     print( "%-12s : %9.2f" % ( "total desp",   lfGone ) )
     print( "%-12s : %9.2f" % ( "total credit", lfPend ) )
     print( "%-12s : %9.2f" % ( "total cash",   lfCash ) )
+
+    if not byHolder == 0 :
+      print( lsSepSaldo )
+      for sHolder in lDict.keys() :
+        print( "%-12s : %9.2f" % ( sHolder, lDict[ sHolder ] ) )
 
 
   def readMovs( self, sFile = None ) :
