@@ -17,7 +17,8 @@ F_INIS=${FF}_saldoIni.txt
 F_MOVS=${FF}.txt
 F_OUT=${FF}_out.txt
 F_BAL=${FF}_bal.txt
-F_RPT=${FF}_rpt.txt
+F_TYPE=${FF}_type.txt
+F_HOLDER=${FF}_holder.txt
 
 type git && {
   URL=`git remote -v | grep fetch | grep github | cut -f 2 | cut -d" " -f 1`
@@ -52,9 +53,16 @@ echo "processing transactions file $F_MOVS ..."
 echo "transactions file $F_MOVS processed OK"
 echo "tmp output in $F_OUT"
 
-bash $PP/b.sh $F_OUT >$F_BAL
+csplit $F_OUT /========================/ {*}
+
+mv xx01 $F_BAL
 echo "balance in $F_BAL"
 
-bash $PP/r.sh $F_OUT >$F_RPT
-echo "report in $F_RPT"
+mv xx02 $F_TYPE
+echo "balance by account type in $F_TYPE"
+
+mv xx03 $F_HOLDER
+echo "balance by holder in $F_HOLDER"
+
+rm xx00 # log
 
